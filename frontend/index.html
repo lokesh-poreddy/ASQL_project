@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS-SQL Research</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">✨</span>
+                    <h2>NEXUS-SQL</h2>
+                </div>
+                <p class="subtitle">Adaptive Hybrid Retrieval</p>
+            </div>
+            
+            <div class="metrics-panel">
+                <h3>System Status</h3>
+                <div id="health-status" class="status-indicator">
+                    <span class="dot"></span> <span class="status-text">Connecting...</span>
+                </div>
+                <div class="metric-group">
+                    <span class="metric-label">Embedding Model</span>
+                    <span id="embedding-provider" class="metric-value">-</span>
+                </div>
+                <div class="metric-group">
+                    <span class="metric-label">Database</span>
+                    <span id="db-status" class="metric-value">-</span>
+                </div>
+                <div class="metric-group">
+                    <span class="metric-label">Knowledge</span>
+                    <span class="metric-value">Local + Global</span>
+                </div>
+                <div class="metric-group">
+                    <span class="metric-label" style="font-size: 10px;">Global Sources</span>
+                    <span class="metric-value" style="font-size: 11px; white-space: normal;">OpenAlex, Semantic Scholar, Crossref</span>
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="#" class="active" onclick="window.location.reload()">New Search</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="chat-container">
+                <div id="chat-history" class="chat-history">
+                    <!-- Welcome Message -->
+                    <div class="message system-message">
+                        <div class="message-content">
+                            <h3>Welcome to NEXUS-SQL</h3>
+                            <p>Ask a question to search across the research paper database. The system uses a hybrid of vector similarity and structured SQL to find exactly what you need.</p>
+                            <div class="suggestions">
+                                <button class="suggestion-chip" onclick="setQuery('Find papers published after 2020')">Find papers published after 2020</button>
+                                <button class="suggestion-chip" onclick="setQuery('Top 5 papers by citation about neural networks')">Top 5 papers by citation about neural networks</button>
+                                <button class="suggestion-chip" onclick="setQuery('Find papers similar to BERT')">Find papers similar to BERT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <form id="query-form" class="query-form">
+                        <input type="text" id="query-input" placeholder="Ask about research papers..." autocomplete="off">
+                        <button type="submit" id="submit-btn" class="submit-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Context Panel (Right side for explanations and SQL) -->
+        <aside class="context-panel" id="context-panel">
+            <div class="context-header">
+                <h3>Query Context</h3>
+            </div>
+            <div class="context-content" id="context-content">
+                <div class="empty-context">
+                    <p>Run a query to see its generated SQL, retrieval mode, and explanation here.</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
