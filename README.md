@@ -56,11 +56,35 @@ PYTHONPATH=backend python3 backend/app/main.py
 ```
 Access the UI at `http://localhost:8000/`.
 
-## 🧪 Testing
-The project includes a robust 120+ test suite covering retrieval algorithms, API integrations, and query routing.
+## 📊 Benchmarking & Experimental Evaluation
+
+NEXUS-SQL includes a comprehensive evaluation and ablation suite evaluating retrieval accuracy, latency percentiles, error recovery, quantization, and resource allocation.
+
+### Running Benchmarks
 ```bash
-PYTHONPATH=backend pytest tests/ -v
+# Run the complete experimental evaluation suite
+PYTHONPATH=.:backend python3 -m evaluation.run_benchmarks
+
+# Run the CLI baseline runner
+cd backend && PYTHONPATH=. python3 -m experiments.runner --experiment all --top-k 10
 ```
+
+Results and comparison tables are saved to:
+- Markdown Report: [`evaluation/results/BENCHMARK_RESULTS.md`](evaluation/results/BENCHMARK_RESULTS.md)
+- JSON Artifact: [`evaluation/results/benchmark_results.json`](evaluation/results/benchmark_results.json)
+- Benchmark Queries: [`data/benchmark_queries.json`](data/benchmark_queries.json)
+
+### Summary of Results ($k=10$)
+| Retrieval Method | P@10 | R@10 | NDCG@10 | MRR | P50 Latency |
+|---|---|---|---|---|---|
+| **SQL-Only** | 0.2294 | 0.4489 | 0.4468 | 0.3737 | 0.021 ms |
+| **Vector-Only** | 0.1325 | 0.3842 | 0.4700 | 0.3712 | 0.026 ms |
+| **Static Hybrid ($\alpha=0.5$)** | 0.1875 | 0.4821 | 0.4899 | 0.4349 | 0.111 ms |
+| **Adaptive Hybrid (Full)** | **0.2300** | **0.4828** | **0.5212** | **0.4435** | 0.127 ms |
+
+- **Error Recovery Decision Accuracy**: 100.0% (5/5 recovered, 5/5 safely halted)
+- **Quantization (INT8 vs FP32)**: 75% storage savings, 31.5% lower latency
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+

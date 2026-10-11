@@ -1,0 +1,75 @@
+{
+  "generated_for": "NEXUS-SQL retrieval and SQL evaluation planning",
+  "created_utc": "2026-10-11",
+  "retrieval_datasets": [
+    {
+      "id": "scifact",
+      "role": "primary scientific retrieval benchmark",
+      "format": "BEIR corpus.jsonl + queries.jsonl + qrels/{split}.tsv",
+      "download_url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip",
+      "published_md5": "5f7d1de60b170fc8027bb7898e2efca1",
+      "known_corpus_scale": "about 5K scientific evidence documents",
+      "known_eval_queries": "about 300 per BEIR evaluation split",
+      "trainable": "Yes, use only official training qrels/pairs if present; do not train on test qrels.",
+      "official_sources": ["https://github.com/beir-cellar/beir/wiki/Datasets-available", "https://github.com/allenai/scifact"]
+    },
+    {
+      "id": "scidocs",
+      "role": "scientific-document retrieval external evaluation",
+      "format": "BEIR corpus.jsonl + queries.jsonl + qrels/{split}.tsv",
+      "download_url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scidocs.zip",
+      "published_md5": "38121350fc3a4d2f48850f6aff52e4a9",
+      "known_corpus_scale": "about 25K scientific documents",
+      "known_eval_queries": "1,000 in BEIR listing",
+      "trainable": "BEIR release lists test split; use as external evaluation unless a separately documented train source is used.",
+      "official_sources": ["https://github.com/beir-cellar/beir/wiki/Datasets-available", "https://huggingface.co/datasets/BeIR/scidocs"]
+    },
+    {
+      "id": "nfcorpus",
+      "role": "optional biomedical retrieval robustness/domain-shift benchmark",
+      "format": "BEIR corpus.jsonl + queries.jsonl + qrels/{split}.tsv",
+      "download_url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nfcorpus.zip",
+      "published_md5": "a89dba18a62ef92f7d323ec890a0d38d",
+      "known_corpus_scale": "about 3.6K documents",
+      "known_eval_queries": "323 in BEIR listing",
+      "trainable": "Train/dev/test splits listed by BEIR; keep the official test split for final evaluation.",
+      "official_sources": ["https://github.com/beir-cellar/beir/wiki/Datasets-available"]
+    }
+  ],
+  "sql_datasets": [
+    {
+      "id": "spider",
+      "role": "cross-domain text-to-SQL baseline and execution accuracy",
+      "official_url": "https://github.com/taoyds/spider",
+      "task_page": "https://yale-lily.github.io/spider",
+      "notes": "Use official splits/evaluator. Its database schemas differ from NEXUS-SQL's scholarly Oracle schema."
+    },
+    {
+      "id": "sparc",
+      "role": "multi-turn conversational text-to-SQL",
+      "official_url": "https://github.com/taoyds/sparc",
+      "notes": "Use only if evaluating a schema-general conversational SQL track; adapt DB dialect and schema handling first."
+    },
+    {
+      "id": "cosql",
+      "role": "conversational DB querying, clarification and unanswerable queries",
+      "official_url": "https://yale-lily.github.io/cosql",
+      "paper": "https://arxiv.org/abs/1909.05378",
+      "notes": "Good for dialogue-state/clarification analysis; separate it from scholarly retrieval qrels."
+    },
+    {
+      "id": "bird",
+      "role": "larger realistic text-to-SQL and SQL-efficiency evaluation",
+      "official_url": "https://bird-bench.github.io/",
+      "filtered_training_subset": "https://huggingface.co/datasets/birdsql/bird23-train-filtered",
+      "notes": "Main benchmark is substantially larger; verify terms, exact version and compute/storage budget."
+    }
+  ],
+  "production_corpus_source": {
+    "id": "openalex",
+    "role": "scholarly metadata corpus for the actual NEXUS-SQL app",
+    "api_docs": "https://help.openalex.org/api/",
+    "works_endpoint": "https://api.openalex.org/works",
+    "notes": "OpenAlex provides metadata but not ready-made relevance qrels for your exact queries. Create and publish your own query set with human-reviewed relevance labels, or derive exact ground truth for clearly defined metadata filters."
+  }
+}

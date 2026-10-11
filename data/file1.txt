@@ -1,0 +1,31 @@
+# Text-to-SQL / Conversation Dataset Links for NEXUS-SQL
+
+Use these as a **separate experimental track** from scholarly retrieval. The app currently targets a fixed scholarly metadata schema (including Oracle-specific code), so these benchmarks require adapters for their schemas and SQL dialects.
+
+## Spider — recommended first SQL benchmark
+- Official data/code: https://github.com/taoyds/spider
+- Task page: https://yale-lily.github.io/spider
+- Evaluate using the official exact-match/component-match/execution or test-suite evaluation scripts appropriate to the benchmark version.
+- Good initial choice because it is a cross-domain Text-to-SQL benchmark with database schemas and official splits.
+
+## SParC — conversational SQL
+- Official repository: https://github.com/taoyds/sparc
+- Task page: https://yale-lily.github.io/sparc
+- Keep full dialogue sequences together. Randomly splitting turns independently can leak dialogue context.
+
+## CoSQL — clarification/unanswerable dialogue behavior
+- Official dataset page: https://yale-lily.github.io/cosql
+- Paper: https://arxiv.org/abs/1909.05378
+- Provides conversations where the database expert may query, clarify ambiguity, or respond to unanswerable questions. Measure clarification/answerability separately from SQL execution accuracy.
+
+## BIRD — larger, efficiency-aware Text-to-SQL
+- Official page: https://bird-bench.github.io/
+- Filtered train subset: https://huggingface.co/datasets/birdsql/bird23-train-filtered
+- Main benchmark paper describes 12,751 text-to-SQL pairs, 95 databases and 33.4 GB of data. Start with its documented subset and verify data access, licenses and compute costs before downloading the full corpus.
+
+## Error-correction test suite
+These resources do not by themselves provide a single ready-made, apples-to-apples “incremental correction success rate” dataset for your current system. Create a versioned test set from a training/development SQL pool (never alter official test queries for training) with controlled failures such as invalid identifiers, syntax corruption, wrong table/column mapping, missing predicates, and invalid joins. Store:
+
+`case_id, source_example_id, corrupted_sql, database_id, injected_error_type, expected_result_or_gold_sql, whether_recovery_should_succeed`
+
+Report the numerator, denominator, error categories, and maximum repair attempts. Keep the final correction test cases held out from any repair rules or model tuning.

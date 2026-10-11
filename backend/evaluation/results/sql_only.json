@@ -1,0 +1,13 @@
+{
+  "experiment": "sql_only",
+  "run_id": "f46aeb9b",
+  "queries": 40,
+  "precision_at_10": 0.2294,
+  "recall_at_10": 0.4489,
+  "ndcg_at_10": 0.4468,
+  "mrr": 0.3737,
+  "map": 0.2703,
+  "p50_ms": 0.02,
+  "p95_ms": 0.04,
+  "p99_ms": 0.04
+}

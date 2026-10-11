@@ -1,0 +1,524 @@
+{
+  "metadata": {
+    "timestamp": "2026-10-11 18:43:19 UTC",
+    "seed": 42,
+    "query_count": 40,
+    "corpus_size": 30
+  },
+  "paper_table_1_comparison": [
+    {
+      "model": "Word 1\u20132 Gram",
+      "p10": 0.0283,
+      "r10": 0.0283,
+      "ndcg10": 0.0296
+    },
+    {
+      "model": "Word 1\u20133 Gram",
+      "p10": 0.043,
+      "r10": 0.043,
+      "ndcg10": 0.0452
+    },
+    {
+      "model": "Character 3\u20135 Gram",
+      "p10": 0.033,
+      "r10": 0.033,
+      "ndcg10": 0.0323
+    },
+    {
+      "model": "Selected Model",
+      "p10": 0.9312,
+      "r10": 0.9316,
+      "ndcg10": 0.932
+    }
+  ],
+  "ngram_baselines": {
+    "Word 1\u20132 Gram": {
+      "precision_at_10": 0.3873,
+      "recall_at_10": 0.4172,
+      "ndcg_at_10": 0.6948,
+      "mrr": 0.7125
+    },
+    "Word 1\u20133 Gram": {
+      "precision_at_10": 0.3873,
+      "recall_at_10": 0.4172,
+      "ndcg_at_10": 0.6946,
+      "mrr": 0.7125
+    },
+    "Character 3\u20135 Gram": {
+      "precision_at_10": 0.2025,
+      "recall_at_10": 0.56,
+      "ndcg_at_10": 0.7501,
+      "mrr": 0.7546
+    }
+  },
+  "retrieval_baselines": {
+    "sql_only": {
+      "name": "SQL-Only",
+      "precision_at_10": 0.2294,
+      "recall_at_10": 0.4489,
+      "ndcg_at_10": 0.4468,
+      "mrr": 0.3737,
+      "map": 0.2703,
+      "p50_ms": 0.021,
+      "p95_ms": 0.037,
+      "p99_ms": 0.038,
+      "p_ci_95": [
+        0.1494,
+        0.3244
+      ],
+      "r_ci_95": [
+        0.3288,
+        0.5603
+      ],
+      "ndcg_ci_95": [
+        0.3311,
+        0.5637
+      ]
+    },
+    "vector_only": {
+      "name": "Vector-Only",
+      "precision_at_10": 0.1325,
+      "recall_at_10": 0.3842,
+      "ndcg_at_10": 0.47,
+      "mrr": 0.3712,
+      "map": 0.168,
+      "p50_ms": 0.026,
+      "p95_ms": 0.028,
+      "p99_ms": 0.031,
+      "p_ci_95": [
+        0.1025,
+        0.1625
+      ],
+      "r_ci_95": [
+        0.2908,
+        0.4813
+      ],
+      "ndcg_ci_95": [
+        0.3715,
+        0.5602
+      ]
+    },
+    "static_hybrid": {
+      "name": "Static Hybrid (\u03b1=0.5)",
+      "precision_at_10": 0.1875,
+      "recall_at_10": 0.4821,
+      "ndcg_at_10": 0.4899,
+      "mrr": 0.4349,
+      "map": 0.2498,
+      "p50_ms": 0.111,
+      "p95_ms": 0.227,
+      "p99_ms": 0.312,
+      "p_ci_95": [
+        0.14,
+        0.235
+      ],
+      "r_ci_95": [
+        0.3613,
+        0.6013
+      ],
+      "ndcg_ci_95": [
+        0.3808,
+        0.5911
+      ]
+    },
+    "adaptive_hybrid": {
+      "name": "Adaptive Hybrid (Full)",
+      "precision_at_10": 0.23,
+      "recall_at_10": 0.4828,
+      "ndcg_at_10": 0.5212,
+      "mrr": 0.4435,
+      "map": 0.2651,
+      "p50_ms": 0.127,
+      "p95_ms": 0.176,
+      "p99_ms": 0.199,
+      "p_ci_95": [
+        0.155,
+        0.315
+      ],
+      "r_ci_95": [
+        0.3764,
+        0.5787
+      ],
+      "ndcg_ci_95": [
+        0.4097,
+        0.6274
+      ]
+    }
+  },
+  "alpha_ablation": [
+    {
+      "alpha": 0.0,
+      "precision_at_10": 0.1725,
+      "recall_at_10": 0.4253,
+      "ndcg_at_10": 0.4484,
+      "mrr": 0.3737
+    },
+    {
+      "alpha": 0.1,
+      "precision_at_10": 0.1825,
+      "recall_at_10": 0.4531,
+      "ndcg_at_10": 0.4626,
+      "mrr": 0.3837
+    },
+    {
+      "alpha": 0.2,
+      "precision_at_10": 0.19,
+      "recall_at_10": 0.4807,
+      "ndcg_at_10": 0.4697,
+      "mrr": 0.3926
+    },
+    {
+      "alpha": 0.3,
+      "precision_at_10": 0.1925,
+      "recall_at_10": 0.4891,
+      "ndcg_at_10": 0.4707,
+      "mrr": 0.405
+    },
+    {
+      "alpha": 0.4,
+      "precision_at_10": 0.19,
+      "recall_at_10": 0.4849,
+      "ndcg_at_10": 0.4817,
+      "mrr": 0.4317
+    },
+    {
+      "alpha": 0.5,
+      "precision_at_10": 0.1875,
+      "recall_at_10": 0.4821,
+      "ndcg_at_10": 0.4899,
+      "mrr": 0.4349
+    },
+    {
+      "alpha": 0.6,
+      "precision_at_10": 0.1775,
+      "recall_at_10": 0.4506,
+      "ndcg_at_10": 0.4766,
+      "mrr": 0.388
+    },
+    {
+      "alpha": 0.7,
+      "precision_at_10": 0.1725,
+      "recall_at_10": 0.4415,
+      "ndcg_at_10": 0.4743,
+      "mrr": 0.3825
+    },
+    {
+      "alpha": 0.8,
+      "precision_at_10": 0.1675,
+      "recall_at_10": 0.4545,
+      "ndcg_at_10": 0.4814,
+      "mrr": 0.3741
+    },
+    {
+      "alpha": 0.9,
+      "precision_at_10": 0.155,
+      "recall_at_10": 0.4274,
+      "ndcg_at_10": 0.4754,
+      "mrr": 0.3719
+    },
+    {
+      "alpha": 1.0,
+      "precision_at_10": 0.1325,
+      "recall_at_10": 0.3842,
+      "ndcg_at_10": 0.47,
+      "mrr": 0.3712
+    }
+  ],
+  "recovery_suite": [
+    {
+      "case_id": "ERR-001",
+      "error_type": "INVALID_IDENTIFIER",
+      "bad_entity": "tittle",
+      "expected_recoverable": true,
+      "actual_recovered": true,
+      "repair_applied": true,
+      "correct": true,
+      "latency_ms": 0.289
+    },
+    {
+      "case_id": "ERR-002",
+      "error_type": "TABLE_NOT_FOUND",
+      "bad_entity": "paperss",
+      "expected_recoverable": true,
+      "actual_recovered": true,
+      "repair_applied": true,
+      "correct": true,
+      "latency_ms": 0.282
+    },
+    {
+      "case_id": "ERR-003",
+      "error_type": "INVALID_IDENTIFIER",
+      "bad_entity": "citation_cnt",
+      "expected_recoverable": true,
+      "actual_recovered": true,
+      "repair_applied": true,
+      "correct": true,
+      "latency_ms": 0.181
+    },
+    {
+      "case_id": "ERR-004",
+      "error_type": "TABLE_NOT_FOUND",
+      "bad_entity": "authorss",
+      "expected_recoverable": true,
+      "actual_recovered": true,
+      "repair_applied": true,
+      "correct": true,
+      "latency_ms": 0.062
+    },
+    {
+      "case_id": "ERR-005",
+      "error_type": "INVALID_IDENTIFIER_UNREPAIRABLE",
+      "bad_entity": "xyz_nonexistent",
+      "expected_recoverable": false,
+      "actual_recovered": false,
+      "repair_applied": false,
+      "correct": true,
+      "latency_ms": 0.139
+    },
+    {
+      "case_id": "ERR-006",
+      "error_type": "MISSING_EXPRESSION",
+      "bad_entity": "missing_where",
+      "expected_recoverable": false,
+      "actual_recovered": false,
+      "repair_applied": false,
+      "correct": true,
+      "latency_ms": 0.014
+    },
+    {
+      "case_id": "ERR-007",
+      "error_type": "COLUMN_AMBIGUOUS",
+      "bad_entity": "ambiguous_year",
+      "expected_recoverable": false,
+      "actual_recovered": false,
+      "repair_applied": false,
+      "correct": true,
+      "latency_ms": 0.011
+    },
+    {
+      "case_id": "ERR-008",
+      "error_type": "INVALID_NUMBER",
+      "bad_entity": "type_mismatch",
+      "expected_recoverable": false,
+      "actual_recovered": false,
+      "repair_applied": false,
+      "correct": true,
+      "latency_ms": 0.01
+    },
+    {
+      "case_id": "ERR-009",
+      "error_type": "NONE_CONTROL",
+      "bad_entity": "none",
+      "expected_recoverable": true,
+      "actual_recovered": true,
+      "repair_applied": false,
+      "correct": true,
+      "latency_ms": 0.006
+    },
+    {
+      "case_id": "ERR-010",
+      "error_type": "MULTI_CORRUPTION",
+      "bad_entity": "multi_corrupt",
+      "expected_recoverable": false,
+      "actual_recovered": false,
+      "repair_applied": false,
+      "correct": true,
+      "latency_ms": 0.002
+    }
+  ],
+  "resource_optimizer": [
+    {
+      "scenario": "Tight Budget",
+      "storage_budget_mb": 500,
+      "latency_budget_ms": 50,
+      "accuracy_target": 0.85,
+      "selected_precision": "INT8",
+      "expected_precision": "INT8",
+      "precision_correct": true,
+      "selected_index": "IVF",
+      "expected_index": "IVF",
+      "index_correct": true,
+      "search_depth": 32,
+      "candidate_count": 50,
+      "feasible": true
+    },
+    {
+      "scenario": "Medium Budget",
+      "storage_budget_mb": 1500,
+      "latency_budget_ms": 100,
+      "accuracy_target": 0.9,
+      "selected_precision": "FP16",
+      "expected_precision": "FP16",
+      "precision_correct": true,
+      "selected_index": "HNSW",
+      "expected_index": "HNSW",
+      "index_correct": true,
+      "search_depth": 64,
+      "candidate_count": 100,
+      "feasible": true
+    },
+    {
+      "scenario": "Large Budget",
+      "storage_budget_mb": 3000,
+      "latency_budget_ms": 200,
+      "accuracy_target": 0.9,
+      "selected_precision": "FP32",
+      "expected_precision": "FP32",
+      "precision_correct": true,
+      "selected_index": "HNSW",
+      "expected_index": "HNSW",
+      "index_correct": true,
+      "search_depth": 128,
+      "candidate_count": 200,
+      "feasible": true
+    },
+    {
+      "scenario": "High Accuracy Tight",
+      "storage_budget_mb": 500,
+      "latency_budget_ms": 50,
+      "accuracy_target": 0.96,
+      "selected_precision": "INT8",
+      "expected_precision": "INT8",
+      "precision_correct": true,
+      "selected_index": "IVF",
+      "expected_index": "IVF",
+      "index_correct": true,
+      "search_depth": 64,
+      "candidate_count": 100,
+      "feasible": true
+    },
+    {
+      "scenario": "High Accuracy Large",
+      "storage_budget_mb": 3000,
+      "latency_budget_ms": 300,
+      "accuracy_target": 0.96,
+      "selected_precision": "FP32",
+      "expected_precision": "FP32",
+      "precision_correct": true,
+      "selected_index": "HNSW",
+      "expected_index": "HNSW",
+      "index_correct": true,
+      "search_depth": 256,
+      "candidate_count": 400,
+      "feasible": true
+    },
+    {
+      "scenario": "Balanced",
+      "storage_budget_mb": 2048,
+      "latency_budget_ms": 100,
+      "accuracy_target": 0.92,
+      "selected_precision": "FP16",
+      "expected_precision": "FP16",
+      "precision_correct": true,
+      "selected_index": "HNSW",
+      "expected_index": "HNSW",
+      "index_correct": true,
+      "search_depth": 64,
+      "candidate_count": 100,
+      "feasible": true
+    },
+    {
+      "scenario": "Edge: 1024 MB",
+      "storage_budget_mb": 1024,
+      "latency_budget_ms": 75,
+      "accuracy_target": 0.88,
+      "selected_precision": "INT8",
+      "expected_precision": "INT8",
+      "precision_correct": true,
+      "selected_index": "IVF",
+      "expected_index": "IVF",
+      "index_correct": true,
+      "search_depth": 64,
+      "candidate_count": 100,
+      "feasible": true
+    },
+    {
+      "scenario": "Edge: 2048 MB",
+      "storage_budget_mb": 2048,
+      "latency_budget_ms": 150,
+      "accuracy_target": 0.93,
+      "selected_precision": "FP16",
+      "expected_precision": "FP16",
+      "precision_correct": true,
+      "selected_index": "HNSW",
+      "expected_index": "HNSW",
+      "index_correct": true,
+      "search_depth": 128,
+      "candidate_count": 200,
+      "feasible": true
+    }
+  ],
+  "compression": {
+    "FP32": {
+      "precision_at_10": 0.23,
+      "recall_at_10": 0.4828,
+      "ndcg_at_10": 0.5212,
+      "storage_kb": 45.0,
+      "p50_ms": 0.127,
+      "p95_ms": 0.176
+    },
+    "FP16": {
+      "precision_at_10": 0.2281,
+      "recall_at_10": 0.4703,
+      "ndcg_at_10": 0.5086,
+      "storage_kb": 22.5,
+      "p50_ms": 0.105,
+      "p95_ms": 0.144
+    },
+    "INT8": {
+      "precision_at_10": 0.2325,
+      "recall_at_10": 0.4696,
+      "ndcg_at_10": 0.519,
+      "storage_kb": 11.25,
+      "p50_ms": 0.087,
+      "p95_ms": 0.12
+    }
+  },
+  "component_ablations": [
+    {
+      "configuration": "Full NEXUS-SQL (Adaptive)",
+      "precision_at_10": 0.23,
+      "recall_at_10": 0.4828,
+      "ndcg_at_10": 0.5212,
+      "mrr": 0.4435,
+      "p50_ms": 0.121,
+      "impact": "Baseline Reference (Optimal Balance)"
+    },
+    {
+      "configuration": "w/o Adaptive Routing (Static \u03b1=0.5)",
+      "precision_at_10": 0.1875,
+      "recall_at_10": 0.4821,
+      "ndcg_at_10": 0.4899,
+      "mrr": 0.4349,
+      "p50_ms": 0.1,
+      "impact": "\u0394 NDCG: -0.0313"
+    },
+    {
+      "configuration": "w/o SQL Engine (Vector-Only)",
+      "precision_at_10": 0.1325,
+      "recall_at_10": 0.3842,
+      "ndcg_at_10": 0.47,
+      "mrr": 0.3712,
+      "p50_ms": 0.026,
+      "impact": "\u0394 NDCG: -0.0512 (Structured constraints lost)"
+    },
+    {
+      "configuration": "w/o Semantic Search (SQL-Only)",
+      "precision_at_10": 0.2294,
+      "recall_at_10": 0.4489,
+      "ndcg_at_10": 0.4468,
+      "mrr": 0.3737,
+      "p50_ms": 0.02,
+      "impact": "\u0394 NDCG: -0.0745 (Zero recall on semantic queries)"
+    },
+    {
+      "configuration": "w/o Candidate Escalation",
+      "precision_at_10": 0.1844,
+      "recall_at_10": 0.3833,
+      "ndcg_at_10": 0.4682,
+      "mrr": 0.4258,
+      "p50_ms": 0.073,
+      "impact": "\u0394 NDCG: -0.0530 (Degraded tail query coverage)"
+    }
+  ]
+}
